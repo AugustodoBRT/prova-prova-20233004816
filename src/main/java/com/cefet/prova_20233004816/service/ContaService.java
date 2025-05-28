@@ -54,6 +54,10 @@ public class ContaService {
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Pessoa não encontrada pelo CPF."));
 
+        if (dto.getSaldo() != null && !dto.getSaldo().equals(conta.getSaldo())) {
+            throw new UnsupportedOperationException("O saldo da conta só pode ser alterado através de lançamentos.");
+        }
+
         conta.setNumero(dto.getNumero());
         conta.setPessoa(pessoa);
 
@@ -77,6 +81,7 @@ public class ContaService {
         dto.setNumero(conta.getNumero());
         dto.setNomePessoa(conta.getPessoa().getNome());
         dto.setCpfPessoa(conta.getPessoa().getCpf());
+        dto.setSaldo(conta.getSaldo());
         return dto;
     }
 

@@ -1,7 +1,9 @@
 package com.cefet.prova_20233004816.controller;
 
 import com.cefet.prova_20233004816.dto.ContaDTO;
+import com.cefet.prova_20233004816.dto.LancamentoDTO;
 import com.cefet.prova_20233004816.service.ContaService;
+import com.cefet.prova_20233004816.service.LancamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,9 @@ public class ContaController {
 
     @Autowired
     private ContaService contaService;
+
+    @Autowired
+    private LancamentoService lancamentoService;
 
     // GET /contas
     @GetMapping
@@ -42,5 +47,11 @@ public class ContaController {
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
         contaService.deletar(id);
+    }
+
+    // GET /contas/{id}/lancamentos
+    @GetMapping("/{id}/lancamentos")
+    public List<LancamentoDTO> listarLancamentosPorConta(@PathVariable Long id) {
+        return lancamentoService.listarPorConta(id);
     }
 }

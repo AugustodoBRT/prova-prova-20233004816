@@ -14,6 +14,17 @@ public class Conta {
     @JoinColumn(nullable = false)
     private Pessoa pessoa;
 
+    @Column(nullable = false, unique = true)
+    private Double saldo = 0.0;
+
+    public Double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
+    }
+
     public Long getId() {
         return id;
     }

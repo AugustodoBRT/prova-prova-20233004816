@@ -5,6 +5,15 @@ public class ContaDTO {
     private String numero;
     private String nomePessoa;
     private String cpfPessoa;
+    private Double saldo;
+
+    public Double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
+    }
 
     public Long getId() {
         return id;
